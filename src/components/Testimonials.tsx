@@ -9,7 +9,7 @@ import { business, testimonials } from "@/data/site";
 
 function Stars({ count }: { count: number }) {
   return (
-    <div className="flex gap-0.5 text-sage">
+    <div className="flex gap-0.5 text-gold">
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
@@ -35,10 +35,10 @@ export default function Testimonials() {
   const current = testimonials[index];
 
   return (
-    <section id="reviews" className="relative bg-noir py-24 sm:py-32">
+    <section id="reviews" className="relative bg-maroon py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-6 lg:px-10">
         <Reveal className="text-center">
-          <p className="font-display text-sm uppercase tracking-[0.4em] text-sage">
+          <p className="font-display text-sm uppercase tracking-[0.4em] text-gold">
             Guest Reviews
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold sm:text-5xl">
@@ -68,7 +68,7 @@ export default function Testimonials() {
               {business.rating.value}
             </span>
             <Stars count={Math.round(business.rating.value)} />
-            <span className="font-body text-xs text-ivory-dim">
+            <span className="font-body text-xs text-cream-dim">
               ({business.rating.count.toLocaleString()} reviews)
             </span>
           </div>
@@ -89,12 +89,12 @@ export default function Testimonials() {
                 className="h-14 w-14 rounded-full"
               />
               <Stars count={current.rating} />
-              <p className="font-body text-base italic text-ivory sm:text-lg">
+              <p className="font-body text-base italic text-cream sm:text-lg">
                 &ldquo;{current.text}&rdquo;
               </p>
-              <p className="font-display text-sm font-semibold text-sage">
+              <p className="font-display text-sm font-semibold text-gold">
                 {current.name}{" "}
-                <span className="font-body font-normal text-ivory-dim">
+                <span className="font-body font-normal text-cream-dim">
                   &middot; {current.date}
                 </span>
               </p>
@@ -109,7 +109,7 @@ export default function Testimonials() {
               onClick={() => setIndex(i)}
               aria-label={`Show review from ${t.name}`}
               className={`h-2 rounded-full transition-all ${
-                i === index ? "w-6 bg-sage" : "w-2 bg-sage/25"
+                i === index ? "w-6 bg-gold" : "w-2 bg-gold/25"
               }`}
             />
           ))}

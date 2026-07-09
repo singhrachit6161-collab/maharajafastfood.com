@@ -1,22 +1,22 @@
 // ---------------------------------------------------------------------------
 // Central business/content configuration.
 //
-// PLACEHOLDER DATA: business.* below was NOT pulled from the Google Maps
-// listing (the sandbox this site was built in has Google Maps domains
-// blocked at the network policy level, so the listing couldn't be fetched
-// automatically). Replace every value in `business` with the real details
-// from https://maps.app.goo.gl/b2JbFNknNbppGSyk8 before launch: name,
-// address, phone, coordinates, opening hours and the embed URL.
+// PLACEHOLDER DATA: business.* below was NOT pulled from a Google Maps
+// listing (Google Maps domains are blocked at this environment's network
+// policy level, so a listing couldn't be fetched automatically). Replace
+// every value in `business` with the real details for Keshari Food Plaza
+// and Banquet before launch: name, address, phone, coordinates, opening
+// hours and the map embed URL.
 // ---------------------------------------------------------------------------
 
 export const business = {
-  name: "Maharaja Fast Food",
-  shortName: "Maharaja",
-  tagline: "Royal Indian Flavors, Fast & Fine",
+  name: "Keshari Food Plaza and Banquet",
+  shortName: "Keshari",
+  tagline: "Where Grand Celebrations Meet Great Taste",
   phoneDisplay: "+91 98765 43210", // PLACEHOLDER — replace with real number
   phoneHref: "+919876543210", // PLACEHOLDER — digits only, for tel: links
   whatsappNumber: "919876543210", // PLACEHOLDER — country code + number, no symbols
-  email: "hello@maharajafastfood.com", // PLACEHOLDER
+  email: "hello@kesharifoodplaza.com", // PLACEHOLDER
   address: {
     line1: "123 MG Road, Near City Mall", // PLACEHOLDER
     line2: "Bengaluru, Karnataka 560001", // PLACEHOLDER
@@ -30,7 +30,7 @@ export const business = {
   // Google Maps listing once it can be retrieved.
   mapEmbedSrc:
     "https://www.google.com/maps?q=12.9716,77.5946&z=16&output=embed",
-  mapsShareUrl: "https://maps.app.goo.gl/b2JbFNknNbppGSyk8",
+  mapsShareUrl: "https://maps.app.goo.gl/b2JbFNknNbppGSyk8", // PLACEHOLDER
   hours: [
     { day: "Monday", time: "11:00 AM – 11:00 PM" },
     { day: "Tuesday", time: "11:00 AM – 11:00 PM" },
@@ -50,10 +50,13 @@ export const business = {
     twitter: "https://x.com/",
     youtube: "https://youtube.com/",
   },
+  // Local-SEO targeting — update the city/area to match the real listing.
+  city: "Bengaluru", // PLACEHOLDER
+  serviceArea: ["Bengaluru", "Whitefield", "Indiranagar", "Koramangala"], // PLACEHOLDER
 };
 
 export const awards = [
-  { year: "2024", title: "Times Food Excellence Award — Best Indian Fine Dining" },
+  { year: "2024", title: "Times Food Excellence Award — Best Banquet & Event Venue" },
   { year: "2023", title: "City Food Critics' Choice — Signature Biryani" },
   { year: "2022", title: "Certificate of Excellence — Google Guest Favorite" },
 ];
@@ -65,6 +68,7 @@ export type Dish = {
   price: string;
   category: "starters" | "mains" | "desserts" | "drinks";
   chefsPick?: boolean;
+  isVeg: boolean;
   tag?: string;
 };
 
@@ -76,6 +80,7 @@ export const signatureDishes: Dish[] = [
     price: "₹549",
     category: "mains",
     chefsPick: true,
+    isVeg: false,
   },
   {
     slug: "hyderabadi-biryani",
@@ -84,14 +89,16 @@ export const signatureDishes: Dish[] = [
     price: "₹599",
     category: "mains",
     chefsPick: true,
+    isVeg: false,
   },
   {
-    slug: "tandoori-platter",
-    name: "Maharaja Tandoori Platter",
+    slug: "keshari-tandoori-platter",
+    name: "Keshari Special Tandoori Platter",
     description: "A royal selection of seekh kebab, tandoori prawns, and murgh malai, finished over charcoal.",
     price: "₹749",
     category: "starters",
     chefsPick: true,
+    isVeg: false,
   },
   {
     slug: "paneer-lababdar",
@@ -99,6 +106,7 @@ export const signatureDishes: Dish[] = [
     description: "Silken cottage cheese in a rich cashew-tomato gravy, finished with cream and crushed kasuri methi.",
     price: "₹479",
     category: "mains",
+    isVeg: true,
   },
 ];
 
@@ -112,6 +120,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         description: "Minced lamb, ginger, and green chilli, grilled on skewers over charcoal.",
         price: "₹399",
         category: "starters",
+        isVeg: false,
       },
       {
         slug: "amritsari-fish",
@@ -119,14 +128,16 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         description: "Basa fillets marinated in carom seed batter, fried golden.",
         price: "₹429",
         category: "starters",
+        isVeg: false,
       },
       {
-        slug: "tandoori-platter",
-        name: "Maharaja Tandoori Platter",
+        slug: "keshari-tandoori-platter",
+        name: "Keshari Special Tandoori Platter",
         description: "A royal selection of seekh kebab, tandoori prawns, and murgh malai.",
         price: "₹749",
         category: "starters",
         chefsPick: true,
+        isVeg: false,
       },
       {
         slug: "vegetable-galouti",
@@ -134,6 +145,15 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         description: "Melt-in-the-mouth patties of slow-cooked lentils and warm spices.",
         price: "₹359",
         category: "starters",
+        isVeg: true,
+      },
+      {
+        slug: "paneer-tikka",
+        name: "Paneer Tikka",
+        description: "Charcoal-grilled cottage cheese marinated in yoghurt and spices.",
+        price: "₹379",
+        category: "starters",
+        isVeg: true,
       },
     ],
   },
@@ -147,6 +167,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         price: "₹549",
         category: "mains",
         chefsPick: true,
+        isVeg: false,
       },
       {
         slug: "hyderabadi-biryani",
@@ -155,6 +176,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         price: "₹599",
         category: "mains",
         chefsPick: true,
+        isVeg: false,
       },
       {
         slug: "paneer-lababdar",
@@ -162,6 +184,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         description: "Cottage cheese in rich cashew-tomato gravy with kasuri methi.",
         price: "₹479",
         category: "mains",
+        isVeg: true,
       },
       {
         slug: "rogan-josh",
@@ -169,13 +192,23 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         description: "Slow-braised lamb in a fragrant Kashmiri chilli and yoghurt curry.",
         price: "₹629",
         category: "mains",
+        isVeg: false,
       },
       {
         slug: "dal-makhani",
-        name: "Maharaja Dal Makhani",
+        name: "Keshari Special Dal Makhani",
         description: "Black lentils simmered overnight with butter and cream.",
         price: "₹349",
         category: "mains",
+        isVeg: true,
+      },
+      {
+        slug: "veg-biryani",
+        name: "Vegetable Dum Biryani",
+        description: "Saffron basmati layered with garden vegetables and fried onions.",
+        price: "₹399",
+        category: "mains",
+        isVeg: true,
       },
     ],
   },
@@ -188,6 +221,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         description: "Warm milk dumplings soaked in cardamom-rose syrup.",
         price: "₹199",
         category: "desserts",
+        isVeg: true,
       },
       {
         slug: "royal-kulfi",
@@ -196,6 +230,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         price: "₹249",
         category: "desserts",
         chefsPick: true,
+        isVeg: true,
       },
       {
         slug: "gajar-halwa",
@@ -203,6 +238,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         description: "Slow-cooked carrot halwa with khoya, nuts, and ghee.",
         price: "₹229",
         category: "desserts",
+        isVeg: true,
       },
     ],
   },
@@ -211,10 +247,11 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
     items: [
       {
         slug: "masala-chai",
-        name: "Maharaja Masala Chai",
+        name: "Keshari Special Masala Chai",
         description: "Hand-pounded spices, slow-brewed with milk.",
         price: "₹99",
         category: "drinks",
+        isVeg: true,
       },
       {
         slug: "lassi",
@@ -222,6 +259,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         description: "Churned yoghurt, cream, and a whisper of saffron.",
         price: "₹149",
         category: "drinks",
+        isVeg: true,
       },
       {
         slug: "virgin-mojito",
@@ -229,6 +267,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         description: "Fresh mint, lime, and rose syrup over crushed ice.",
         price: "₹179",
         category: "drinks",
+        isVeg: true,
       },
     ],
   },
@@ -238,12 +277,12 @@ export const galleryImages = [
   { id: "g1", alt: "Restaurant ambience — main dining hall", variant: "interior", tall: true },
   { id: "g2", alt: "Signature biryani plating", variant: "food", tall: false },
   { id: "g3", alt: "Chef finishing a tandoori dish", variant: "chef", tall: false },
-  { id: "g4", alt: "Private dining nook", variant: "interior", tall: false },
+  { id: "g4", alt: "Grand banquet hall set for a wedding reception", variant: "banquet", tall: false },
   { id: "g5", alt: "Butter chicken close-up", variant: "food", tall: true },
-  { id: "g6", alt: "Bar and lounge seating", variant: "interior", tall: false },
+  { id: "g6", alt: "Banquet stage decor for a sangeet night", variant: "banquet", tall: false },
   { id: "g7", alt: "Chef plating dessert", variant: "chef", tall: false },
   { id: "g8", alt: "Kebab platter over charcoal", variant: "food", tall: false },
-  { id: "g9", alt: "Evening courtyard seating", variant: "interior", tall: true },
+  { id: "g9", alt: "Banquet hall lit up for a corporate gala", variant: "banquet", tall: true },
 ] as const;
 
 export type Testimonial = {
@@ -265,7 +304,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Vikram S.",
     rating: 5,
-    text: "Booked a table for our anniversary — the tandoori platter and the live grilling station made the night unforgettable.",
+    text: "We hosted our wedding reception in the banquet hall and it was flawless — décor, food, and service all felt five-star.",
     date: "1 month ago",
   },
   {
@@ -277,7 +316,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Karan D.",
     rating: 5,
-    text: "Every dish felt curated. The dessert platter with kulfi falooda is a must-try. Will be back.",
+    text: "Booked the hall for our company's annual day — the events team handled everything, and the combo packages saved us so much planning.",
     date: "2 months ago",
   },
 ];
@@ -288,16 +327,72 @@ export const chef = {
   experience: "18+ Years",
   philosophy:
     "\"Every recipe on this menu has been passed down through generations of royal kitchens. My work isn't to reinvent them — it's to honour them, one plate at a time.\"",
-  bio: "Trained in the kitchens of Rajasthan's heritage havelis before leading award-winning kitchens across three continents, Chef Arjun brings a rare devotion to slow-cooked, spice-forward Indian cuisine — reimagined for the modern fine-dining table.",
+  bio: "Trained in the kitchens of Rajasthan's heritage havelis before leading award-winning kitchens across three continents, Chef Arjun brings a rare devotion to slow-cooked, spice-forward Indian cuisine — reimagined for the modern fine-dining and banquet table.",
 };
 
 export const navLinks = [
   { href: "#dishes", label: "Signature" },
-  { href: "#story", label: "Our Story" },
   { href: "#menu", label: "Menu" },
+  { href: "#offers", label: "Offers" },
   { href: "#gallery", label: "Gallery" },
   { href: "#reviews", label: "Reviews" },
-  { href: "#chef", label: "Chef" },
+  { href: "#banquet", label: "Banquets" },
   { href: "#reserve", label: "Reserve" },
   { href: "#contact", label: "Contact" },
+];
+
+export const eventTypes = [
+  "Wedding & Reception",
+  "Engagement",
+  "Birthday Party",
+  "Anniversary",
+  "Corporate Event",
+  "Kitty Party / Get-together",
+  "Other",
+];
+
+export const banquetHalls = [
+  { name: "Royal Grand Hall", capacity: "Up to 500 guests" },
+  { name: "Emerald Banquet", capacity: "Up to 250 guests" },
+  { name: "Rooftop Lawn", capacity: "Up to 150 guests" },
+  { name: "Not sure yet", capacity: "We'll help you choose" },
+];
+
+export type Offer = {
+  slug: string;
+  title: string;
+  description: string;
+  badge: string;
+  validity: string;
+};
+
+export const festivalOffers: Offer[] = [
+  {
+    slug: "wedding-season-special",
+    title: "Wedding Season Special",
+    description: "Book the banquet hall for your wedding and get a complimentary Sangeet night stage setup.",
+    badge: "Save up to ₹25,000",
+    validity: "Valid through wedding season",
+  },
+  {
+    slug: "festive-family-thali",
+    title: "Festive Family Thali Combo",
+    description: "A royal 12-course thali for 4, crafted for festival celebrations at home or in-hall.",
+    badge: "20% OFF",
+    validity: "Diwali – New Year",
+  },
+  {
+    slug: "corporate-lunch-package",
+    title: "Corporate Lunch Package",
+    description: "Daily buffet packages for offices and conferences, with banquet space for larger gatherings.",
+    badge: "Starting ₹399/head",
+    validity: "Weekdays only",
+  },
+  {
+    slug: "weekend-combo-feast",
+    title: "Weekend Combo Feast",
+    description: "Any Signature main + starter + dessert + drink, bundled at a special weekend price.",
+    badge: "Combo @ ₹699",
+    validity: "Saturday – Sunday",
+  },
 ];

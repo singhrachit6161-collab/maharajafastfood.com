@@ -4,15 +4,18 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
-import { CalendarDays, CheckCircle2, Clock, Users } from "lucide-react";
-import Reveal from "./Reveal";
 import {
-  reservationSchema,
-  type ReservationInput,
-} from "@/lib/reservation-schema";
-import { business } from "@/data/site";
+  CalendarDays,
+  CheckCircle2,
+  PartyPopper,
+  Users,
+  Building2,
+} from "lucide-react";
+import Reveal from "./Reveal";
+import { banquetSchema, type BanquetInput } from "@/lib/banquet-schema";
+import { eventTypes, banquetHalls, business } from "@/data/site";
 
-export default function Reservation() {
+export default function BanquetBooking() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle"
   );
@@ -22,15 +25,15 @@ export default function Reservation() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ReservationInput>({
-    resolver: zodResolver(reservationSchema),
-    defaultValues: { guests: 2 },
+  } = useForm<BanquetInput>({
+    resolver: zodResolver(banquetSchema),
+    defaultValues: { guestCount: 100 },
   });
 
-  async function onSubmit(data: ReservationInput) {
+  async function onSubmit(data: BanquetInput) {
     setStatus("submitting");
     try {
-      const res = await fetch("/api/reservation", {
+      const res = await fetch("/api/banquet-booking", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -46,18 +49,18 @@ export default function Reservation() {
   const today = new Date().toISOString().split("T")[0];
 
   return (
-    <section id="reserve" className="relative bg-maroon-soft py-24 sm:py-32">
+    <section id="banquet" className="relative bg-maroon py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-6 lg:px-10">
         <Reveal className="text-center">
           <p className="font-display text-sm uppercase tracking-[0.4em] text-gold">
-            Book Your Table
+            Weddings &middot; Parties &middot; Corporate Events
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold sm:text-5xl">
-            Reserve a Table
+            Banquet &amp; Event Booking
           </h2>
           <p className="mt-4 font-body text-cream-dim">
-            Secure your evening at {business.shortName}. We&apos;ll confirm
-            your booking shortly after you submit.
+            From an intimate engagement to a 500-guest wedding, {business.shortName}&apos;s
+            banquet halls and events team handle every detail.
           </p>
         </Reveal>
 
@@ -73,17 +76,18 @@ export default function Reservation() {
               >
                 <CheckCircle2 className="h-14 w-14 text-gold" strokeWidth={1.25} />
                 <h3 className="font-display text-2xl font-bold">
-                  Reservation Received!
+                  Enquiry Received!
                 </h3>
                 <p className="max-w-sm font-body text-cream-dim">
-                  Thank you for choosing {business.name}. Our team will
-                  call to confirm your table shortly.
+                  Thank you for considering {business.name} for your event. Our
+                  banquet team will contact you shortly to discuss availability
+                  and packages.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
                   className="mt-2 rounded-full border border-gold/40 px-6 py-2 text-sm text-gold transition-colors hover:bg-gold hover:text-maroon"
                 >
-                  Book Another Table
+                  Submit Another Enquiry
                 </button>
               </motion.div>
             ) : (
@@ -126,57 +130,89 @@ export default function Reservation() {
 
                 <div>
                   <label className="mb-1.5 flex items-center gap-1.5 font-body text-xs uppercase tracking-wide text-cream-dim">
-                    <Users className="h-3.5 w-3.5" /> Guests
+                    <PartyPopper className="h-3.5 w-3.5" /> Event Type
                   </label>
-                  <input
-                    type="number"
-                    min={1}
-                    max={20}
-                    {...register("guests", { valueAsNumber: true })}
-                    className="w-full rounded-xl border border-gold/20 bg-transparent px-4 py-3 font-body text-sm text-cream focus:border-gold focus:outline-none"
-                  />
-                  {errors.guests && (
-                    <p className="mt-1 text-xs text-red-400">{errors.guests.message}</p>
+                  <select
+                    {...register("eventType")}
+                    defaultValue=""
+                    className="w-full rounded-xl border border-gold/20 bg-maroon-soft px-4 py-3 font-body text-sm text-cream focus:border-gold focus:outline-none"
+                  >
+                    <option value="" disabled>
+                      Select event type
+                    </option>
+                    {eventTypes.map((t) => (
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.eventType && (
+                    <p className="mt-1 text-xs text-red-400">{errors.eventType.message}</p>
                   )}
                 </div>
 
                 <div>
                   <label className="mb-1.5 flex items-center gap-1.5 font-body text-xs uppercase tracking-wide text-cream-dim">
-                    <CalendarDays className="h-3.5 w-3.5" /> Date
+                    <CalendarDays className="h-3.5 w-3.5" /> Event Date
                   </label>
                   <input
                     type="date"
                     min={today}
-                    {...register("date")}
+                    {...register("eventDate")}
                     className="w-full rounded-xl border border-gold/20 bg-transparent px-4 py-3 font-body text-sm text-cream focus:border-gold focus:outline-none [color-scheme:dark]"
                   />
-                  {errors.date && (
-                    <p className="mt-1 text-xs text-red-400">{errors.date.message}</p>
+                  {errors.eventDate && (
+                    <p className="mt-1 text-xs text-red-400">{errors.eventDate.message}</p>
                   )}
                 </div>
 
                 <div>
                   <label className="mb-1.5 flex items-center gap-1.5 font-body text-xs uppercase tracking-wide text-cream-dim">
-                    <Clock className="h-3.5 w-3.5" /> Time
+                    <Users className="h-3.5 w-3.5" /> Guest Count
                   </label>
                   <input
-                    type="time"
-                    {...register("time")}
-                    className="w-full rounded-xl border border-gold/20 bg-transparent px-4 py-3 font-body text-sm text-cream focus:border-gold focus:outline-none [color-scheme:dark]"
+                    type="number"
+                    min={10}
+                    max={2000}
+                    {...register("guestCount", { valueAsNumber: true })}
+                    className="w-full rounded-xl border border-gold/20 bg-transparent px-4 py-3 font-body text-sm text-cream focus:border-gold focus:outline-none"
                   />
-                  {errors.time && (
-                    <p className="mt-1 text-xs text-red-400">{errors.time.message}</p>
+                  {errors.guestCount && (
+                    <p className="mt-1 text-xs text-red-400">{errors.guestCount.message}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="mb-1.5 flex items-center gap-1.5 font-body text-xs uppercase tracking-wide text-cream-dim">
+                    <Building2 className="h-3.5 w-3.5" /> Hall Preference
+                  </label>
+                  <select
+                    {...register("hallPreference")}
+                    defaultValue=""
+                    className="w-full rounded-xl border border-gold/20 bg-maroon-soft px-4 py-3 font-body text-sm text-cream focus:border-gold focus:outline-none"
+                  >
+                    <option value="" disabled>
+                      Select a hall
+                    </option>
+                    {banquetHalls.map((h) => (
+                      <option key={h.name} value={h.name}>
+                        {h.name} — {h.capacity}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.hallPreference && (
+                    <p className="mt-1 text-xs text-red-400">{errors.hallPreference.message}</p>
                   )}
                 </div>
 
                 <div className="sm:col-span-2">
                   <label className="mb-1.5 block font-body text-xs uppercase tracking-wide text-cream-dim">
-                    Special Request (optional)
+                    Tell us more (optional)
                   </label>
                   <textarea
-                    {...register("specialRequest")}
+                    {...register("message")}
                     rows={3}
-                    placeholder="Anniversary, dietary needs, seating preference..."
+                    placeholder="Catering style, decor theme, budget range..."
                     className="w-full resize-none rounded-xl border border-gold/20 bg-transparent px-4 py-3 font-body text-sm text-cream placeholder:text-cream-dim/50 focus:border-gold focus:outline-none"
                   />
                 </div>
@@ -192,7 +228,7 @@ export default function Reservation() {
                   disabled={status === "submitting"}
                   className="sm:col-span-2 mt-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-maroon transition-transform hover:scale-[1.02] disabled:opacity-60"
                 >
-                  {status === "submitting" ? "Submitting..." : "Confirm Reservation"}
+                  {status === "submitting" ? "Submitting..." : "Send Enquiry"}
                 </button>
               </motion.form>
             )}

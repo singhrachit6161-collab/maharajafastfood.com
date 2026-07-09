@@ -4,16 +4,16 @@ import { galleryImages } from "@/data/site";
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="relative bg-noir-soft py-24 sm:py-32">
+    <section id="gallery" className="relative bg-maroon-soft py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="font-display text-sm uppercase tracking-[0.4em] text-sage">
+          <p className="font-display text-sm uppercase tracking-[0.4em] text-gold">
             Gallery
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold sm:text-5xl">
             Ambience &amp; Craft
           </h2>
-          <p className="mt-4 font-body text-ivory-dim">
+          <p className="mt-4 font-body text-cream-dim">
             A glimpse into our dining room, our kitchen, and the plates in
             between.
           </p>

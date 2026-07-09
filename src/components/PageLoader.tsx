@@ -17,7 +17,7 @@ export default function PageLoader() {
     <AnimatePresence>
       {loading && (
         <motion.div
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4 bg-noir"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4 bg-maroon"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
         >
@@ -26,19 +26,19 @@ export default function PageLoader() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <Crown className="h-12 w-12 text-sage" strokeWidth={1.25} />
+            <Crown className="h-12 w-12 text-gold" strokeWidth={1.25} />
           </motion.div>
           <motion.span
-            className="font-display text-lg tracking-[0.35em] text-ivory-dim uppercase"
+            className="font-display text-lg tracking-[0.35em] text-cream-dim uppercase"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             {business.shortName}
           </motion.span>
-          <motion.div className="h-[2px] w-40 overflow-hidden rounded-full bg-emerald">
+          <motion.div className="h-[2px] w-40 overflow-hidden rounded-full bg-wine">
             <motion.div
-              className="h-full bg-sage"
+              className="h-full bg-gold"
               initial={{ x: "-100%" }}
               animate={{ x: "100%" }}
               transition={{ duration: 1, ease: "easeInOut" }}

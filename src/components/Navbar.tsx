@@ -40,7 +40,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="font-body text-sm tracking-wide text-ivory-dim transition-colors hover:text-sage"
+                className="font-body text-sm tracking-wide text-cream-dim transition-colors hover:text-gold"
               >
                 {link.label}
               </a>
@@ -50,14 +50,14 @@ export default function Navbar() {
 
         <a
           href="#reserve"
-          className="hidden rounded-full border border-sage/40 bg-sage/10 px-5 py-2 text-sm font-medium text-sage transition-all hover:bg-sage hover:text-noir lg:inline-block"
+          className="hidden rounded-full border border-gold/40 bg-gold/10 px-5 py-2 text-sm font-medium text-gold transition-all hover:bg-gold hover:text-maroon lg:inline-block"
         >
           Reserve a Table
         </a>
 
         <button
           aria-label="Toggle menu"
-          className="text-ivory lg:hidden"
+          className="text-cream lg:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
@@ -79,7 +79,7 @@ export default function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block py-3 font-body text-base text-ivory-dim transition-colors hover:text-sage"
+                    className="block py-3 font-body text-base text-cream-dim transition-colors hover:text-gold"
                   >
                     {link.label}
                   </a>
@@ -89,7 +89,7 @@ export default function Navbar() {
                 <a
                   href="#reserve"
                   onClick={() => setOpen(false)}
-                  className="block rounded-full bg-sage px-5 py-3 text-center text-sm font-semibold text-noir"
+                  className="block rounded-full bg-gold px-5 py-3 text-center text-sm font-semibold text-maroon"
                 >
                   Reserve a Table
                 </a>

@@ -12,13 +12,13 @@ export default function PrivacyPolicyPage() {
       <h1 className="font-display text-3xl font-bold sm:text-4xl">
         Privacy Policy
       </h1>
-      <p className="mt-3 font-body text-sm text-ivory-dim">
+      <p className="mt-3 font-body text-sm text-cream-dim">
         Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
       </p>
 
-      <div className="mt-10 space-y-8 font-body text-sm leading-relaxed text-ivory-dim">
+      <div className="mt-10 space-y-8 font-body text-sm leading-relaxed text-cream-dim">
         <section>
-          <h2 className="font-display text-lg font-semibold text-ivory">
+          <h2 className="font-display text-lg font-semibold text-cream">
             Information We Collect
           </h2>
           <p className="mt-2">
@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-ivory">
+          <h2 className="font-display text-lg font-semibold text-cream">
             How We Use Your Information
           </h2>
           <p className="mt-2">
@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-ivory">
+          <h2 className="font-display text-lg font-semibold text-cream">
             Third-Party Services
           </h2>
           <p className="mt-2">
@@ -53,7 +53,7 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-ivory">
+          <h2 className="font-display text-lg font-semibold text-cream">
             Your Rights
           </h2>
           <p className="mt-2">
@@ -64,7 +64,7 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section>
-          <h2 className="font-display text-lg font-semibold text-ivory">
+          <h2 className="font-display text-lg font-semibold text-cream">
             Contact
           </h2>
           <p className="mt-2">

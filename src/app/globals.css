@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --color-noir: #060807;
-  --color-noir-soft: #0d100e;
-  --color-noir-elevated: #12160f;
-  --color-ivory: #f3f2ea;
-  --color-ivory-dim: #b9bab0;
-  --color-sage: #b7e6a5;
-  --color-sage-deep: #7cbf65;
-  --color-emerald: #16221a;
-  --color-gold: #cba135;
+  --color-maroon: #1a0508;
+  --color-maroon-soft: #220709;
+  --color-maroon-elevated: #2c0b0f;
+  --color-wine: #4a141c;
+  --color-cream: #f8f0e0;
+  --color-cream-dim: #cbb49e;
+  --color-gold: #d8b25c;
+  --color-gold-deep: #a97b2a;
+  --color-champagne: #f2dfa8;
 }
 
 @theme inline {
-  --color-noir: var(--color-noir);
-  --color-noir-soft: var(--color-noir-soft);
-  --color-noir-elevated: var(--color-noir-elevated);
-  --color-ivory: var(--color-ivory);
-  --color-ivory-dim: var(--color-ivory-dim);
-  --color-sage: var(--color-sage);
-  --color-sage-deep: var(--color-sage-deep);
-  --color-emerald: var(--color-emerald);
+  --color-maroon: var(--color-maroon);
+  --color-maroon-soft: var(--color-maroon-soft);
+  --color-maroon-elevated: var(--color-maroon-elevated);
+  --color-wine: var(--color-wine);
+  --color-cream: var(--color-cream);
+  --color-cream-dim: var(--color-cream-dim);
   --color-gold: var(--color-gold);
+  --color-gold-deep: var(--color-gold-deep);
+  --color-champagne: var(--color-champagne);
   --font-display: var(--font-playfair);
   --font-body: var(--font-manrope);
 }
@@ -31,14 +31,14 @@ html {
 }
 
 body {
-  background: var(--color-noir);
-  color: var(--color-ivory);
+  background: var(--color-maroon);
+  color: var(--color-cream);
   font-family: var(--font-body), sans-serif;
 }
 
 ::selection {
-  background: var(--color-sage);
-  color: var(--color-noir);
+  background: var(--color-gold);
+  color: var(--color-maroon);
 }
 
 ::-webkit-scrollbar {
@@ -46,13 +46,13 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-noir);
+  background: var(--color-maroon);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-emerald);
+  background: var(--color-wine);
   border-radius: 999px;
-  border: 2px solid var(--color-noir);
+  border: 2px solid var(--color-maroon);
 }
 
 .font-display {
@@ -60,24 +60,24 @@ body {
 }
 
 .text-gradient-gold {
-  background: linear-gradient(120deg, var(--color-sage) 0%, var(--color-gold) 55%, var(--color-sage) 100%);
+  background: linear-gradient(120deg, var(--color-gold) 0%, var(--color-champagne) 45%, var(--color-gold-deep) 75%, var(--color-champagne) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .glass-panel {
-  background: rgba(15, 20, 15, 0.55);
+  background: rgba(44, 11, 15, 0.55);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(183, 230, 165, 0.12);
+  border: 1px solid rgba(216, 178, 92, 0.16);
 }
 
 .glass-panel-light {
-  background: rgba(243, 242, 234, 0.06);
+  background: rgba(248, 240, 224, 0.06);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(243, 242, 234, 0.1);
+  border: 1px solid rgba(248, 240, 224, 0.1);
 }
 
 .grain-overlay {
@@ -96,5 +96,22 @@ body {
 
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(183, 230, 165, 0.35), transparent);
+  background: linear-gradient(90deg, transparent, rgba(216, 178, 92, 0.4), transparent);
+}
+
+.ornate-border {
+  position: relative;
+}
+
+.ornate-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(216, 178, 92, 0.5), rgba(216, 178, 92, 0.05) 40%, rgba(216, 178, 92, 0.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }

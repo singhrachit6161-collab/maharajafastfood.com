@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import PageLoader from "@/components/PageLoader";
+import StructuredData from "@/components/StructuredData";
 import { business } from "@/data/site";
 
 const playfair = Playfair_Display({
@@ -19,23 +20,32 @@ const manrope = Manrope({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+const description = `${business.name} is a premium Indian food plaza and banquet venue in ${business.city} — royal-recipe dining plus wedding, birthday, and corporate event halls. Book your table or your celebration today.`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.maharajafastfood.com"),
+  metadataBase: new URL("https://www.kesharifoodplaza.com"),
   title: `${business.name} | ${business.tagline}`,
-  description:
-    "Maharaja Fast Food is a premium Indian fine-dining destination serving royal recipes — from tandoori classics to slow-cooked biryani. Reserve your table today.",
+  description,
   keywords: [
-    "Maharaja Fast Food",
+    business.name,
+    "Keshari Food Plaza",
+    "banquet hall near me",
+    `banquet hall in ${business.city}`,
+    `wedding venue ${business.city}`,
+    `party hall booking ${business.city}`,
     "Indian fine dining",
     "best Indian restaurant",
     "biryani",
     "tandoori",
     "restaurant reservation",
+    "event booking",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: `${business.name} | ${business.tagline}`,
-    description:
-      "An unforgettable fine dining experience — royal Indian recipes, reimagined.",
+    description,
     siteName: business.name,
     type: "website",
     locale: "en_IN",
@@ -43,7 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${business.name} | ${business.tagline}`,
-    description: "An unforgettable fine dining experience.",
+    description,
   },
   robots: {
     index: true,
@@ -52,7 +62,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#060807",
+  themeColor: "#1a0508",
   width: "device-width",
   initialScale: 1,
 };
@@ -67,7 +77,8 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${manrope.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-noir text-ivory">
+      <body className="min-h-full flex flex-col bg-maroon text-cream">
+        <StructuredData />
         <PageLoader />
         <Navbar />
         <main className="flex-1">{children}</main>
