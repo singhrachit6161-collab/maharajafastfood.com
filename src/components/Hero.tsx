@@ -9,7 +9,13 @@ export default function Hero() {
   return (
     <section id="top" className="relative flex h-[100svh] min-h-[640px] w-full items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
-        <PlaceholderMedia variant="hero" className="h-full w-full" />
+        <PlaceholderMedia
+          variant="hero"
+          src="/images/hero-indian-wedding.jpg"
+          alt="Grand Indian wedding banquet stage decorated in gold and floral at Keshari Food Plaza and Banquet"
+          priority
+          className="h-full w-full"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-maroon via-maroon/70 to-maroon/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-maroon/60 via-transparent to-maroon/60" />
       </div>

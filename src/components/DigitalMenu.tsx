@@ -125,6 +125,8 @@ export default function DigitalMenu() {
               >
                 <PlaceholderMedia
                   variant={mediaVariant[active]}
+                  src={item.image}
+                  alt={item.name}
                   className="h-20 w-20 shrink-0 rounded-xl"
                 />
                 <div className="min-w-0">

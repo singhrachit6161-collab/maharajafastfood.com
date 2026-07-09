@@ -70,6 +70,7 @@ export type Dish = {
   chefsPick?: boolean;
   isVeg: boolean;
   tag?: string;
+  image?: string;
 };
 
 export const signatureDishes: Dish[] = [
@@ -81,6 +82,7 @@ export const signatureDishes: Dish[] = [
     category: "mains",
     chefsPick: true,
     isVeg: false,
+    image: "/images/dish-butter-chicken.jpg",
   },
   {
     slug: "hyderabadi-biryani",
@@ -90,6 +92,7 @@ export const signatureDishes: Dish[] = [
     category: "mains",
     chefsPick: true,
     isVeg: false,
+    image: "/images/dish-biryani.jpg",
   },
   {
     slug: "keshari-tandoori-platter",
@@ -99,6 +102,7 @@ export const signatureDishes: Dish[] = [
     category: "starters",
     chefsPick: true,
     isVeg: false,
+    image: "/images/dish-tandoori-platter.jpg",
   },
   {
     slug: "paneer-lababdar",
@@ -107,6 +111,7 @@ export const signatureDishes: Dish[] = [
     price: "₹479",
     category: "mains",
     isVeg: true,
+    image: "/images/dish-paneer.jpg",
   },
 ];
 
@@ -138,6 +143,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         category: "starters",
         chefsPick: true,
         isVeg: false,
+        image: "/images/dish-tandoori-platter.jpg",
       },
       {
         slug: "vegetable-galouti",
@@ -168,6 +174,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         category: "mains",
         chefsPick: true,
         isVeg: false,
+        image: "/images/dish-butter-chicken.jpg",
       },
       {
         slug: "hyderabadi-biryani",
@@ -177,6 +184,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         category: "mains",
         chefsPick: true,
         isVeg: false,
+        image: "/images/dish-biryani.jpg",
       },
       {
         slug: "paneer-lababdar",
@@ -185,6 +193,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         price: "₹479",
         category: "mains",
         isVeg: true,
+        image: "/images/dish-paneer.jpg",
       },
       {
         slug: "rogan-josh",
@@ -231,6 +240,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         category: "desserts",
         chefsPick: true,
         isVeg: true,
+        image: "/images/dessert-kulfi.jpg",
       },
       {
         slug: "gajar-halwa",
@@ -252,6 +262,7 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
         price: "₹99",
         category: "drinks",
         isVeg: true,
+        image: "/images/drink-chai.jpg",
       },
       {
         slug: "lassi",
@@ -274,15 +285,15 @@ export const menu: Record<Dish["category"], { label: string; items: Dish[] }> = 
 };
 
 export const galleryImages = [
-  { id: "g1", alt: "Restaurant ambience — main dining hall", variant: "interior", tall: true },
-  { id: "g2", alt: "Signature biryani plating", variant: "food", tall: false },
-  { id: "g3", alt: "Chef finishing a tandoori dish", variant: "chef", tall: false },
-  { id: "g4", alt: "Grand banquet hall set for a wedding reception", variant: "banquet", tall: false },
-  { id: "g5", alt: "Butter chicken close-up", variant: "food", tall: true },
-  { id: "g6", alt: "Banquet stage decor for a sangeet night", variant: "banquet", tall: false },
-  { id: "g7", alt: "Chef plating dessert", variant: "chef", tall: false },
-  { id: "g8", alt: "Kebab platter over charcoal", variant: "food", tall: false },
-  { id: "g9", alt: "Banquet hall lit up for a corporate gala", variant: "banquet", tall: true },
+  { id: "g1", alt: "Restaurant ambience — main dining hall", variant: "interior", tall: true, image: "/images/interior-dining.jpg" },
+  { id: "g2", alt: "Signature biryani plating", variant: "food", tall: false, image: "/images/dish-biryani.jpg" },
+  { id: "g3", alt: "Chef at work in the kitchen", variant: "chef", tall: false, image: "/images/chef-cooking-action.jpg" },
+  { id: "g4", alt: "Indian wedding stage decorated in gold and floral for a reception", variant: "banquet", tall: false, image: "/images/banquet-bridal-dais.jpg" },
+  { id: "g5", alt: "Butter chicken close-up", variant: "food", tall: true, image: "/images/dish-butter-chicken.jpg" },
+  { id: "g6", alt: "Banquet stage flower wall backdrop for a sangeet night", variant: "banquet", tall: false, image: "/images/banquet-indian-stage.jpg" },
+  { id: "g7", alt: "Portrait of one of our chefs", variant: "chef", tall: false, image: "/images/chef-portrait.jpg" },
+  { id: "g8", alt: "Kebab platter over charcoal", variant: "food", tall: false, image: "/images/dish-tandoori-platter.jpg" },
+  { id: "g9", alt: "Elegant table setting for a corporate gala", variant: "banquet", tall: true, image: "/images/banquet-gala.jpg" },
 ] as const;
 
 export type Testimonial = {

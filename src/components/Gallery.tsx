@@ -24,7 +24,8 @@ export default function Gallery() {
             <Reveal key={img.id} delay={(i % 3) * 0.08} className="break-inside-avoid">
               <PlaceholderMedia
                 variant={img.variant}
-                label={img.alt}
+                src={img.image}
+                alt={img.alt}
                 className={`w-full rounded-2xl ${img.tall ? "h-96" : "h-64"} transition-transform duration-500 hover:scale-[1.02]`}
               />
             </Reveal>

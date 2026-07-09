@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   ChefHat,
   Flame,
@@ -66,12 +67,33 @@ const VARIANT_STYLES: Record<
 export default function PlaceholderMedia({
   variant = "food",
   label,
+  src,
+  alt,
+  priority,
   className = "",
 }: {
   variant?: Variant;
   label?: string;
+  src?: string;
+  alt?: string;
+  priority?: boolean;
   className?: string;
 }) {
+  if (src) {
+    return (
+      <div className={`relative overflow-hidden ${className}`}>
+        <Image
+          src={src}
+          alt={alt || label || ""}
+          fill
+          priority={priority}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
   const style = VARIANT_STYLES[variant];
   return (
     <div

@@ -35,7 +35,8 @@ export default function SignatureDishes() {
                 <div className="relative h-56 overflow-hidden">
                   <PlaceholderMedia
                     variant="food"
-                    label={dish.name}
+                    src={dish.image}
+                    alt={dish.name}
                     className="h-full w-full transition-transform duration-700 group-hover:scale-110"
                   />
                   {dish.chefsPick && (

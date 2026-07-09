@@ -11,17 +11,20 @@ export default function OurStory() {
           <div className="grid grid-cols-2 gap-4">
             <PlaceholderMedia
               variant="interior"
-              label="Interior"
+              src="/images/interior-dining.jpg"
+              alt="Keshari dining hall interior"
               className="col-span-2 h-64 rounded-2xl sm:h-80"
             />
             <PlaceholderMedia
               variant="story"
-              label="Heritage"
+              src="/images/heritage-decor.jpg"
+              alt="Heritage decor accents"
               className="h-40 rounded-2xl"
             />
             <PlaceholderMedia
               variant="chef"
-              label="Kitchen"
+              src="/images/chef-cooking-action.jpg"
+              alt="Chef at work in the kitchen"
               className="h-40 rounded-2xl"
             />
           </div>

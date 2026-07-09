@@ -10,7 +10,8 @@ export default function ChefSection() {
         <Reveal>
           <PlaceholderMedia
             variant="chef"
-            label={chef.name}
+            src="/images/chef-portrait.jpg"
+            alt={chef.name}
             className="h-[26rem] w-full rounded-3xl sm:h-[32rem]"
           />
         </Reveal>
